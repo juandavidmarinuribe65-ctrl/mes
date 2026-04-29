@@ -4,8 +4,13 @@ let locked = false;
 
 const music = document.getElementById("bgMusic");
 
+/* INICIALIZAR SOLO UNA ACTIVA */
+screens.forEach((s, i)=>{
+  if(i !== 0) s.classList.remove("active");
+});
+
 /* =========================
-   CAMBIO DE PANTALLA SEGURO
+   CAMBIO SEGURO
 ========================= */
 
 function nextScreen(){
@@ -13,51 +18,43 @@ function nextScreen(){
   if(locked) return;
   locked = true;
 
-  const next = screens[currentScreen + 1];
-
-  if(next){
-
-    screens[currentScreen].classList.remove("active");
-    currentScreen++;
-    screens[currentScreen].classList.add("active");
-
-    if(music && music.paused){
-      music.play().catch(()=>{});
-    }
-
-    // asegurar reproducción de videos
-    document.querySelectorAll("video").forEach(v=>{
-      v.muted = true;
-      v.playsInline = true;
-      v.play().catch(()=>{});
-    });
+  if(currentScreen >= screens.length - 1){
+    locked = false;
+    return;
   }
 
-  setTimeout(()=> locked = false, 400);
-}
-
-/* SOLO UN EVENTO (IMPORTANTE PARA CEL) */
-document.addEventListener("click", nextScreen, { passive:true });
-
-/* =========================
-   ACTIVAR MEDIA EN PRIMER TOQUE
-========================= */
-
-function enableMedia(){
+  screens[currentScreen].classList.remove("active");
+  currentScreen++;
+  screens[currentScreen].classList.add("active");
 
   if(music && music.paused){
     music.play().catch(()=>{});
   }
+
+  // videos fix móvil
+  document.querySelectorAll("video").forEach(v=>{
+    v.muted = true;
+    v.playsInline = true;
+    v.play().catch(()=>{});
+  });
+
+  setTimeout(()=> locked = false, 300);
+}
+
+/* SOLO UN TOQUE */
+document.addEventListener("click", nextScreen, { passive:true });
+
+/* ACTIVAR AUDIO/VIDEO EN PRIMER TOQUE */
+document.addEventListener("click", ()=>{
+  if(music) music.play().catch(()=>{});
 
   document.querySelectorAll("video").forEach(v=>{
     v.muted = true;
     v.playsInline = true;
     v.play().catch(()=>{});
   });
-}
 
-/* solo primera interacción */
-document.addEventListener("click", enableMedia, { once:true });
+}, { once:true });
 
 /* =========================
    CONTADOR
