@@ -3,12 +3,17 @@ let currentScreen = 0;
 
 const music = document.getElementById("bgMusic");
 
-let locked = false; // evita doble disparo
+let canClick = true;
+
+/* =========================
+   NAVEGACIÓN SEGURA
+========================= */
 
 function nextScreen(){
 
-  if(locked) return;
-  locked = true;
+  if(!canClick) return;
+
+  canClick = false;
 
   if(currentScreen < screens.length - 1){
     screens[currentScreen].classList.remove("active");
@@ -16,18 +21,28 @@ function nextScreen(){
     screens[currentScreen].classList.add("active");
   }
 
-  if(music && music.paused){
+  // audio SOLO cuando hay interacción real
+  if(music){
     music.play().catch(()=>{});
   }
 
-  // desbloquea después de un pequeño delay
-  setTimeout(()=> locked = false, 400);
+  // anti doble toque (iOS + Android)
+  setTimeout(()=> {
+    canClick = true;
+  }, 500);
 }
 
-/* SOLO UN EVENTO (IMPORTANTE) */
-document.addEventListener("click", nextScreen);
+/* =========================
+   SOLO UN EVENTO (IMPORTANTE)
+========================= */
 
-/* CONTADOR */
+/* usamos pointerdown (sirve para PC + móvil) */
+document.addEventListener("pointerdown", nextScreen);
+
+/* =========================
+   CONTADOR
+========================= */
+
 const startDate = new Date("2025-10-29T00:00:00");
 
 function updateCounter(){
