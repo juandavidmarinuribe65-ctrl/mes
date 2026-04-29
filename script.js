@@ -1,5 +1,4 @@
 
-
 const screens =
 document.querySelectorAll(".screen");
 
@@ -10,9 +9,7 @@ document.getElementById("bgMusic");
 
 music.volume = 0.2;
 
-document.addEventListener(
-"click",
-function(){
+function nextScreen(){
 
   if(music.paused){
     music.play();
@@ -30,7 +27,19 @@ function(){
     .classList.add("active");
   }
 
-});
+}
+
+document.addEventListener(
+"click",
+nextScreen
+);
+
+document.addEventListener(
+"touchstart",
+nextScreen
+);
+
+/* CONTADOR */
 
 const startDate =
 new Date("2025-10-29T00:00:00");
@@ -45,35 +54,34 @@ function updateCounter(){
   Math.floor(diff / 1000);
 
   const minutes =
-  Math.floor(diff / (1000 * 60));
+  Math.floor(diff / (1000*60));
 
   const hours =
-  Math.floor(diff / (1000 * 60 * 60));
+  Math.floor(diff / (1000*60*60));
 
   const days =
-  Math.floor(diff / (1000 * 60 * 60 * 24));
+  Math.floor(diff / (1000*60*60*24));
 
   const months =
   Math.floor(days / 30);
 
   document.getElementById(
-  "months").innerText = months;
+  "months").textContent = months;
 
   document.getElementById(
-  "days").innerText = days;
+  "days").textContent = days;
 
   document.getElementById(
-  "hours").innerText = hours;
+  "hours").textContent = hours;
 
   document.getElementById(
-  "minutes").innerText = minutes;
+  "minutes").textContent = minutes;
 
   document.getElementById(
-  "seconds").innerText = seconds;
+  "seconds").textContent = seconds;
 }
 
 setInterval(updateCounter,1000);
 
 updateCounter();
-```
 
