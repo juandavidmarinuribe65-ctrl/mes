@@ -7,7 +7,11 @@ let currentScreen = 0;
 const music =
 document.getElementById("bgMusic");
 
-music.volume = 0.25;
+/* VOLUMEN */
+
+music.volume = 0.2;
+
+/* TOCAR PANTALLA */
 
 document.body.addEventListener(
 "click",
@@ -30,6 +34,8 @@ document.body.addEventListener(
   }
 
 });
+
+/* CONTADOR */
 
 const startDate =
 new Date("2025-10-29T00:00:00");
@@ -74,50 +80,4 @@ function updateCounter(){
 setInterval(updateCounter,1000);
 
 updateCounter();
-
-const memories =
-document.querySelectorAll(".memory");
-
-let currentMemory = 0;
-
-setInterval(() => {
-
-  memories[currentMemory]
-  .classList.remove("active-memory");
-
-  if(
-    memories[currentMemory]
-    .tagName === "VIDEO"
-  ){
-
-    memories[currentMemory]
-    .pause();
-
-    music.volume = 0.25;
-  }
-
-  currentMemory++;
-
-  if(currentMemory >=
-  memories.length){
-
-    currentMemory = 0;
-  }
-
-  memories[currentMemory]
-  .classList.add("active-memory");
-
-  if(
-    memories[currentMemory]
-    .tagName === "VIDEO"
-  ){
-
-    music.volume = 0.1;
-
-    memories[currentMemory]
-    .play();
-  }
-
-},7000);
 ```
-
