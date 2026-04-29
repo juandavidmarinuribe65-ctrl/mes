@@ -30,7 +30,8 @@ body{
   justify-content:center;
   align-items:center;
 
-  position:absolute;
+  position:fixed;
+
   top:0;
   left:0;
 
@@ -39,7 +40,10 @@ body{
 
 .active{
   display:flex;
+  z-index:10;
 }
+```
+
 
 /* TEXTO */
 
