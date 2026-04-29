@@ -6,13 +6,13 @@ music.volume = 0.2;
 
 let canClick = true;
 
-/* 🔁 CAMBIO DE PANTALLA */
+/* 📱 CAMBIO DE PANTALLA */
 function nextScreen() {
 
   if (!canClick) return;
   canClick = false;
 
-  // 🎵 iniciar música solo con interacción
+  // 🎵 música solo con interacción real
   if (music && music.paused) {
     music.play().catch(() => {});
   }
@@ -31,23 +31,32 @@ function nextScreen() {
   }, 400);
 }
 
-/* 📱 TOQUE UNIVERSAL (MÓVIL + PC) */
+/* 📱 TOQUE GLOBAL (ANDROID + IPHONE + PC) */
 document.addEventListener("pointerdown", nextScreen);
 
 
-/* 📊 CONTADOR */
+/* 📅 CONTADOR DESDE 29 OCT 2025 */
 const startDate = new Date("2025-10-29T00:00:00");
 
 function updateCounter() {
 
   const now = new Date();
+
   const diff = now - startDate;
 
   const seconds = Math.floor(diff / 1000);
   const minutes = Math.floor(diff / (1000 * 60));
   const hours = Math.floor(diff / (1000 * 60 * 60));
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const months = Math.floor(days / 30);
+
+  // 📆 meses reales
+  let months =
+    (now.getFullYear() - startDate.getFullYear()) * 12 +
+    (now.getMonth() - startDate.getMonth());
+
+  if (now.getDate() < startDate.getDate()) {
+    months--;
+  }
 
   const set = (id, value) => {
     const el = document.getElementById(id);
