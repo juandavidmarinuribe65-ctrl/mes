@@ -1,4 +1,53 @@
-/* style.css */ *{ margin:0; padding:0; box-sizing:border-box; } body{ font-family:sans-serif; overflow:hidden; background: linear-gradient( to bottom, #9ecfff, #b7d8ff ); color:white; } /* PANTALLAS */ .screen{ width:100vw; height:100vh; display:none; justify-content:center; align-items:center; position:fixed; top:0; left:0; padding:20px; } .active{ display:flex; z-index:10; }
+
+/* style.css */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:sans-serif;
+
+  overflow:hidden;
+
+  background:
+  linear-gradient(
+    to bottom,
+    #9ecfff,
+    #b7d8ff
+  );
+
+  color:white;
+}
+
+/* PANTALLAS */
+
+.screen{
+  width:100vw;
+  height:100vh;
+
+  display:none;
+
+  justify-content:center;
+  align-items:center;
+
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  padding:20px;
+}
+
+.active{
+  display:flex;
+  z-index:10;
+}
+```
+
+
 /* TOCA */
 
 .tap-text{
@@ -196,28 +245,21 @@ img,
 video{
   pointer-events:none;
 }
+```
 
-
+}
 .back-btn{
-  position: absolute;
-  top: 15px;
-  left: 15px;
+  position:absolute;
+  top:15px;
+  left:15px;
 
-  font-size: 32px;
-  color: white;
+  font-size:28px;
+  color:white;
 
-  z-index: 9999;
+  z-index:999;
 
-  opacity: 0.9;
-  cursor: pointer;
+  opacity:0.8;
+  user-select:none;
 
-  width: 40px;
-  height: 40px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(0,0,0,0.2);
-  border-radius: 50%;
+  cursor:pointer;
 }
