@@ -1,20 +1,26 @@
+
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
 }
 
 body{
-  background:linear-gradient(
-  to bottom,
-  #cfe8ff,
-  #b7d8ff
+  font-family:sans-serif;
+  overflow:hidden;
+
+  background:
+  linear-gradient(
+    to bottom,
+    #cfe8ff,
+    #b7d8ff
   );
 
-  overflow:hidden;
   color:white;
 }
+
+/* PANTALLAS */
 
 .screen{
   width:100vw;
@@ -36,16 +42,26 @@ body{
   display:flex;
 }
 
+/* TEXTO ABAJO */
+
 .tap-text{
   position:fixed;
+
   bottom:30px;
+
   width:100%;
+
   text-align:center;
+
   opacity:.8;
+
   z-index:999;
 }
 
+/* CARD */
+
 .card{
+
   width:90%;
   max-width:400px;
 
@@ -58,13 +74,15 @@ body{
   padding:30px;
 
   text-align:center;
-
-  box-shadow:0 0 30px rgba(0,0,0,.1);
 }
 
-.portada h1{
+.card h1{
   font-size:40px;
   margin:20px 0;
+}
+
+.date{
+  opacity:.9;
 }
 
 .heart{
@@ -90,19 +108,19 @@ body{
 
 }
 
-.calendar{
-  margin-top:25px;
-}
+/* FECHAS */
 
 .special{
+
   background:white;
+
   color:#6da8e6;
+
+  margin-top:15px;
 
   padding:15px;
 
   border-radius:20px;
-
-  margin-bottom:15px;
 
   font-weight:bold;
 }
@@ -111,9 +129,9 @@ body{
   font-size:20px;
 }
 
-.counter{
+/* CONTADOR */
 
-  margin-top:20px;
+.counter{
 
   display:grid;
 
@@ -121,9 +139,11 @@ body{
   repeat(2,1fr);
 
   gap:15px;
+
+  margin-top:20px;
 }
 
-.counter div{
+.counter-box{
 
   background:rgba(255,255,255,.2);
 
@@ -132,60 +152,56 @@ body{
   border-radius:20px;
 }
 
-.counter span{
+.counter-box span{
   font-size:24px;
   font-weight:bold;
 }
 
-.letter-container{
+/* CARTA */
+
+.letter-card{
+
   width:90%;
   max-width:400px;
-}
-
-.envelope{
-
-  width:100%;
-  height:220px;
-
-  background:#ffc4d6;
-
-  border-radius:20px;
-}
-
-.letter{
 
   background:white;
 
   color:#444;
 
-  padding:25px;
+  padding:30px;
 
-  border-radius:20px;
+  border-radius:30px;
 
-  margin-top:-100px;
-
-  position:relative;
+  line-height:1.6;
 }
 
-.memories-container{
-  width:100%;
-  text-align:center;
-}
+/* GALERIA */
 
-.memory-frame{
+.gallery{
 
   width:90%;
   max-width:400px;
 
   height:70vh;
 
-  margin:auto;
+  position:relative;
 
   border-radius:25px;
 
   overflow:hidden;
+}
 
-  position:relative;
+.gallery h2{
+
+  position:absolute;
+
+  top:15px;
+
+  width:100%;
+
+  text-align:center;
+
+  z-index:10;
 }
 
 .memory{
@@ -205,3 +221,5 @@ body{
 .active-memory{
   opacity:1;
 }
+```
+
