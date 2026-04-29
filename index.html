@@ -1,145 +1,101 @@
-
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laura ❤️ Juan</title>
 
-  <title>Laura ❤️ Juan</title>
-
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- MUSICA -->
-  <audio id="bgMusic" loop>
-    <source src="cancion.mp3" type="audio/mp3">
-  </audio>
+<!-- MUSICA -->
+<audio id="bgMusic" loop>
+  <source src="cancion.mp3" type="audio/mp3">
+</audio>
 
-  <!-- TOCAR -->
-  <div class="tap-text">
-    toca la pantalla ✨
+<!-- TEXTO TOQUE -->
+<div class="tap-text">toca la pantalla ✨</div>
+
+<!-- PANTALLA 1 -->
+<section class="screen active">
+  <div class="card">
+    <h2>Feliz Mesiversario</h2>
+    <h1>Laura ❤️ Juan</h1>
+    <p class="date">29 • Octubre • 2025</p>
+    <div class="heart">❤️</div>
   </div>
+</section>
 
-  <!-- PANTALLA 1 -->
-  <section class="screen active">
-
-    <div class="card">
-
-      <h2>Feliz Mesiversario</h2>
-
-      <h1>Laura ❤️ Juan</h1>
-
-      <p class="date">
-        29 • Octubre • 2025
-      </p>
-
-      <div class="heart">
-        ❤️
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PANTALLA 2 -->
-  <section class="screen">
-
-    <div class="card">
-
-      <h2>Nuestra Historia ❤️</h2>
-
-      <div class="special">
-        29 Octubre 2025 ❤️
-      </div>
-
-      <div class="special big">
-        29 Abril 2026 — 6 Meses 💖
-      </div>
-
-      <div class="counter">
-
-        <div class="counter-box">
-          <span id="months">0</span>
-          <p>Meses</p>
-        </div>
-
-        <div class="counter-box">
-          <span id="days">0</span>
-          <p>Días</p>
-        </div>
-
-        <div class="counter-box">
-          <span id="hours">0</span>
-          <p>Horas</p>
-        </div>
-
-        <div class="counter-box">
-          <span id="minutes">0</span>
-          <p>Minutos</p>
-        </div>
-
-        <div class="counter-box">
-          <span id="seconds">0</span>
-          <p>Segundos</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PANTALLA 3 -->
-  <section class="screen">
-
-    <div class="letter-card">
-
-      <h2>Para Laura ❤️</h2>
-
-      <p>
-        ESCRIBE AQUÍ TU CARTA ❤️
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- PANTALLA 4 -->
-
-<!-- PANTALLA 4 -->
+<!-- PANTALLA 2 -->
 <section class="screen">
-  <div class="love-collage">
+  <div class="card">
 
-    <div class="center-text">
-      te amo mucho princesa ❤️
+    <h2>Nuestra Historia ❤️</h2>
+
+    <div class="special">29 Octubre 2025 ❤️</div>
+    <div class="special big">29 Abril 2026 — 6 Meses 💖</div>
+
+    <div class="counter">
+
+      <div class="counter-box"><span id="months">0</span><p>Meses</p></div>
+      <div class="counter-box"><span id="days">0</span><p>Días</p></div>
+      <div class="counter-box"><span id="hours">0</span><p>Horas</p></div>
+      <div class="counter-box"><span id="minutes">0</span><p>Minutos</p></div>
+      <div class="counter-box"><span id="seconds">0</span><p>Segundos</p></div>
+
     </div>
-
-    <!-- 📸 FOTOS -->
-    <img class="pic p1" src="foto1.jpeg">
-    <img class="pic p2" src="foto2.jpeg">
-    <img class="pic p8" src="foto3.jpeg">
-
-    <!-- 🎥 VIDEOS -->
-    <video class="pic p3" src="video1.mp4" autoplay muted loop playsinline></video>
-    <video class="pic p4" src="video2.mp4" autoplay muted loop playsinline></video>
-
-    <video class="pic p5" src="video3.mp4" autoplay muted loop playsinline></video>
-    <video class="pic p6" src="video4.mp4" autoplay muted loop playsinline></video>
-    <video class="pic p7" src="video5.mp4" autoplay muted loop playsinline></video>
 
   </div>
 </section>
 
-<script src="./script.js"></script>
+<!-- PANTALLA 3 -->
+<section class="screen">
+  <div class="letter-card">
+
+    <h2>Para Laura ❤️</h2>
+
+    <p>
+    Hola mi princesa bella, gracias por estos 6 meses tan lindos.  
+    Quiero estar contigo toda mi vida, a tu lado en todo momento.  
+    Te amo mucho ❤️
+    </p>
+
+  </div>
+</section>
+
+<!-- PANTALLA 4 (COLLAGE) -->
+<section class="screen">
+
+  <div class="collage">
+
+    <!-- centro -->
+    <div class="center">
+      te amo princesa ❤️
+    </div>
+
+    <!-- fila 1 -->
+    <img class="item i1" src="foto1.jpeg">
+    <img class="item i2" src="video1.mp4">
+    <img class="item i3" src="foto2.jpeg">
+
+    <!-- fila 2 -->
+    <video class="item i4" src="video2.mp4" autoplay muted loop></video>
+    <div></div>
+    <video class="item i5" src="video3.mp4" autoplay muted loop></video>
+
+    <!-- fila 3 -->
+    <video class="item i6" src="video4.mp4" autoplay muted loop></video>
+    <video class="item i7" src="video5.mp4" autoplay muted loop></video>
+    <video class="item i8" src="video1.mp4" autoplay muted loop></video>
+
+  </div>
+
+</section>
+
+<script src="script.js"></script>
 
 </body>
 </html>
-
-
-</html>
-```
