@@ -6,69 +6,60 @@ music.volume = 0.2;
 
 let canClick = true;
 
-/* 📱 CAMBIO DE PANTALLA */
+/* 🔁 CAMBIO DE PANTALLA */
 function nextScreen() {
+  goToScreen(currentScreen + 1);
+}
+
+function prevScreen() {
+  goToScreen(currentScreen - 1);
+}
+
+function goToScreen(index) {
 
   if (!canClick) return;
   canClick = false;
 
-  // 🎵 música solo con interacción real
+  if (index < 0 || index >= screens.length) {
+    canClick = true;
+    return;
+  }
+
   if (music && music.paused) {
     music.play().catch(() => {});
   }
 
-  // 🔄 cambiar pantalla
-  if (currentScreen < screens.length - 1) {
-
-    screens[currentScreen].classList.remove("active");
-    currentScreen++;
-    screens[currentScreen].classList.add("active");
-
-  }
+  screens[currentScreen].classList.remove("active");
+  currentScreen = index;
+  screens[currentScreen].classList.add("active");
 
   setTimeout(() => {
     canClick = true;
   }, 400);
 }
 
-/* 📱 TOQUE GLOBAL (ANDROID + IPHONE + PC) */
+/* 📱 TOQUE (TAP = AVANZAR) */
 document.addEventListener("pointerdown", nextScreen);
 
+/* 📲 SWIPE DETECTION */
+let startX = 0;
 
-/* 📅 CONTADOR DESDE 29 OCT 2025 */
-const startDate = new Date("2025-10-29T00:00:00");
+document.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
 
-function updateCounter() {
+document.addEventListener("touchend", (e) => {
+  let endX = e.changedTouches[0].clientX;
 
-  const now = new Date();
+  let diff = startX - endX;
 
-  const diff = now - startDate;
-
-  const seconds = Math.floor(diff / 1000);
-  const minutes = Math.floor(diff / (1000 * 60));
-  const hours = Math.floor(diff / (1000 * 60 * 60));
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-  // 📆 meses reales
-  let months =
-    (now.getFullYear() - startDate.getFullYear()) * 12 +
-    (now.getMonth() - startDate.getMonth());
-
-  if (now.getDate() < startDate.getDate()) {
-    months--;
+  // 👉 swipe izquierda (avanza)
+  if (diff > 50) {
+    nextScreen();
   }
 
-  const set = (id, value) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value;
-  };
-
-  set("months", months);
-  set("days", days);
-  set("hours", hours);
-  set("minutes", minutes);
-  set("seconds", seconds);
-}
-
-setInterval(updateCounter, 1000);
-updateCounter();
+  // 👈 swipe derecha (volver)
+  if (diff < -50) {
+    prevScreen();
+  }
+});
