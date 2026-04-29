@@ -1,85 +1,95 @@
 
-const screens = document.querySelectorAll(".screen");
+
+// script.js
+
+const screens =
+document.querySelectorAll(".screen");
+
 let currentScreen = 0;
 
-const music = document.getElementById("bgMusic");
+const music =
+document.getElementById("bgMusic");
+
 music.volume = 0.2;
 
-/* =========================
-   🔄 NAVEGACIÓN BASE
-========================= */
+/* CAMBIAR */
 
-function goToScreen(index) {
+function nextScreen(){
 
-  if (index < 0 || index >= screens.length) return;
-
-  screens[currentScreen].classList.remove("active");
-  currentScreen = index;
-  screens[currentScreen].classList.add("active");
-}
-
-function nextScreen() {
-  goToScreen(currentScreen + 1);
-}
-
-function prevScreen(event) {
-  if (event) event.stopPropagation();
-  goToScreen(currentScreen - 1);
-}
-
-/* =========================
-   📱 TOQUE (AVANZAR)
-   (bloquea botón atrás)
-========================= */
-
-document.addEventListener("pointerdown", (e) => {
-
-  // si toca el botón ← no avanza
-  if (e.target.classList.contains("back-btn")) return;
-
-  // inicia música en primer toque
-  if (music && music.paused) {
-    music.play().catch(() => {});
+  if(music.paused){
+    music.play();
   }
 
-  nextScreen();
-});
+  if(currentScreen <
+  screens.length - 1){
 
-/* =========================
-   📊 CONTADOR
-========================= */
+    screens[currentScreen]
+    .classList.remove("active");
 
-const startDate = new Date("2025-10-29T00:00:00");
+    currentScreen++;
 
-function updateCounter() {
+    screens[currentScreen]
+    .classList.add("active");
+  }
+
+}
+
+/* MOVIL */
+
+document.body.addEventListener(
+"touchstart",
+nextScreen
+);
+
+document.body.addEventListener(
+"click",
+nextScreen
+);
+
+/* CONTADOR */
+
+const startDate =
+new Date("2025-10-29T00:00:00");
+
+function updateCounter(){
 
   const now = new Date();
+
   const diff = now - startDate;
 
-  const seconds = Math.floor(diff / 1000);
-  const minutes = Math.floor(diff / (1000 * 60));
-  const hours = Math.floor(diff / (1000 * 60 * 60));
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const seconds =
+  Math.floor(diff / 1000);
 
-  let months =
-    (now.getFullYear() - startDate.getFullYear()) * 12 +
-    (now.getMonth() - startDate.getMonth());
+  const minutes =
+  Math.floor(diff / (1000*60));
 
-  if (now.getDate() < startDate.getDate()) {
-    months--;
-  }
+  const hours =
+  Math.floor(diff / (1000*60*60));
 
-  const set = (id, value) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value;
-  };
+  const days =
+  Math.floor(diff / (1000*60*60*24));
 
-  set("months", months);
-  set("days", days);
-  set("hours", hours);
-  set("minutes", minutes);
-  set("seconds", seconds);
+  const months =
+  Math.floor(days / 30);
+
+  document.getElementById(
+  "months").innerText = months;
+
+  document.getElementById(
+  "days").innerText = days;
+
+  document.getElementById(
+  "hours").innerText = hours;
+
+  document.getElementById(
+  "minutes").innerText = minutes;
+
+  document.getElementById(
+  "seconds").innerText = seconds;
 }
 
-setInterval(updateCounter, 1000);
+setInterval(updateCounter,1000);
+
 updateCounter();
+```
+
