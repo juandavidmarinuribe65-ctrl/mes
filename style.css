@@ -7,11 +7,14 @@
 body{
   font-family:sans-serif;
   overflow:hidden;
-  background:linear-gradient(to bottom,#9ecfff,#b7d8ff);
+
+  /* mejor contraste (evita blanco en móvil) */
+  background: linear-gradient(to bottom, #6fb3ff, #3d7edb);
+
   color:white;
 }
 
-/* PANTALLAS (FIX REAL) */
+/* PANTALLAS */
 .screen{
   width:100vw;
   height:100vh;
@@ -27,15 +30,37 @@ body{
   opacity:0;
   pointer-events:none;
   transition:opacity .3s ease;
+
+  /* fondo seguro para móvil */
+  background: linear-gradient(to bottom, #6fb3ff, #3d7edb);
 }
 
-/* SOLO UNA ACTIVA */
+/* ACTIVA */
 .screen.active{
   opacity:1;
   pointer-events:auto;
   z-index:10;
 }
 
+/* CARD */
+.card,
+.letter-card,
+.counter-box{
+  color:white;
+}
+
+/* contraste texto */
+.card h1,
+.card h2,
+.letter-card p{
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* blur seguro iOS */
+.card{
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
 /* TEXTO */
 .tap-text{
   position:fixed;
