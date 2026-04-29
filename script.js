@@ -1,7 +1,4 @@
 
-
-// PANTALLAS
-
 const screens =
 document.querySelectorAll(".screen");
 
@@ -33,9 +30,6 @@ document.body.addEventListener(
   }
 
 });
-
-
-// CONTADOR
 
 const startDate =
 new Date("2025-10-29T00:00:00");
@@ -80,9 +74,6 @@ function updateCounter(){
 setInterval(updateCounter,1000);
 
 updateCounter();
-
-
-// GALERIA
 
 const memories =
 document.querySelectorAll(".memory");
@@ -129,3 +120,4 @@ setInterval(() => {
 
 },7000);
 ```
+
