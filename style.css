@@ -511,11 +511,8 @@ video{
   position:absolute;
   top:20px;
   left:20px;
-
   font-size:28px;
   color:white;
-
   z-index:999;
   opacity:0.8;
-  user-select:none;
 }
