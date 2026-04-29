@@ -1,3 +1,7 @@
+/* =========================
+   RESET
+========================= */
+
 *{
   margin:0;
   padding:0;
@@ -7,6 +11,7 @@
 body{
   font-family:sans-serif;
   overflow:hidden;
+
   background: linear-gradient(to bottom, #9ecfff, #b7d8ff);
   color:white;
 }
@@ -49,7 +54,7 @@ body{
 }
 
 /* =========================
-   CARD
+   CARD PRINCIPAL
 ========================= */
 
 .card{
@@ -58,15 +63,16 @@ body{
 
   background:rgba(255,255,255,.2);
   padding:30px;
-  border-radius:30px;
 
+  border-radius:30px;
   text-align:center;
+
   backdrop-filter:blur(10px);
 }
 
 .card h1{
-  margin:20px 0;
   font-size:40px;
+  margin:20px 0;
 }
 
 .date{
@@ -80,6 +86,7 @@ body{
 .heart{
   font-size:50px;
   margin-top:20px;
+
   animation:pulse 1.5s infinite;
 }
 
@@ -99,8 +106,8 @@ body{
 
   padding:15px;
   border-radius:20px;
-  margin-top:15px;
 
+  margin-top:15px;
   font-weight:bold;
 }
 
@@ -116,6 +123,7 @@ body{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:15px;
+
   margin-top:20px;
 }
 
@@ -148,13 +156,68 @@ body{
 }
 
 /* =========================
+   COLLAGE
+========================= */
+
+.collage{
+  width:100%;
+  height:100vh;
+
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  grid-template-rows:repeat(3, 1fr);
+
+  place-items:center;
+
+  padding:40px 20px;
+  gap:15px;
+
+  position:relative;
+}
+
+/* centro */
+.center{
+  grid-column:2;
+  grid-row:2;
+
+  width:120px;
+  height:120px;
+
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(10px);
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+  font-weight:bold;
+  font-size:16px;
+
+  z-index:5;
+}
+
+/* items */
+.item{
+  width:90px;
+  height:120px;
+
+  object-fit:cover;
+  border-radius:15px;
+
+  box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+/* =========================
    BOTÓN ATRÁS
 ========================= */
 
 .back-btn{
   position:absolute;
-  top:15px;
-  left:15px;
+  top:20px;
+  left:20px;
 
   width:40px;
   height:40px;
@@ -170,132 +233,14 @@ body{
   border-radius:50%;
 
   z-index:9999;
-  cursor:pointer;
-}
-
-/* =========================
-   COLLAGE (FOTOS ALREDEDOR)
-========================= */
-
-/* =========================
-   COLLAGE (ORDENADO)
-========================= */
-
-.love-collage{
-  width:100%;
-  height:100vh;
-  position:relative;
-  overflow:hidden;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* CENTRO */
-.center-text{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-
-  width:180px;
-  height:180px;
-
-  border-radius:50%;
-  background:rgba(255,255,255,.25);
-  backdrop-filter:blur(10px);
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  text-align:center;
-  font-size:18px;
-  font-weight:bold;
-
-  z-index:10;
-}
-
-/* IMÁGENES Y VIDEOS */
-.pic{
-  position:absolute;
-
-  width:100px;
-  height:140px;
-
-  object-fit:cover;
-  border-radius:18px;
-
-  box-shadow:0 5px 20px rgba(0,0,0,.25);
-}
-
-/* =========================
-   POSICIONES (MEJOR ORDENADAS)
-========================= */
-
-.p1{
-  top:8%;
-  left:8%;
-}
-
-.p2{
-  top:8%;
-  right:8%;
-}
-
-.p3{
-  top:35%;
-  left:4%;
-}
-
-.p4{
-  top:35%;
-  right:4%;
-}
-
-.p5{
-  bottom:8%;
-  left:8%;
-}
-
-.p6{
-  bottom:8%;
-  right:8%;
-}
-
-.p7{
-  bottom:18%;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-/* =========================
-   RESPONSIVE (CELULAR)
-========================= */
-
-@media (max-width: 480px){
-
-  .pic{
-    width:85px;
-    height:120px;
-  }
-
-  .center-text{
-    width:160px;
-    height:160px;
-    font-size:16px;
-  }
-
-  .p7{
-    bottom:20%;
-  }
 }
 
 /* =========================
    IMPORTANTE
 ========================= */
 
-img, video{
+img,
+video{
   pointer-events:none;
 }
+
