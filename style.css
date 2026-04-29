@@ -248,3 +248,18 @@ video{
 ```
 
 }
+.back-btn{
+  position:absolute;
+  top:15px;
+  left:15px;
+
+  font-size:28px;
+  color:white;
+
+  z-index:999;
+
+  opacity:0.8;
+  user-select:none;
+
+  cursor:pointer;
+}
