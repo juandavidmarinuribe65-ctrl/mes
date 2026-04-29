@@ -29,15 +29,7 @@ function nextScreen(){
 
 }
 
-document.addEventListener(
-"click",
-nextScreen
-);
-
-document.addEventListener(
-"touchstart",
-nextScreen
-);
+document.body.addEventListener("pointerdown", nextScreen);
 
 /* CONTADOR */
 
