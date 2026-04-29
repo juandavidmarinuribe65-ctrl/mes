@@ -1,6 +1,5 @@
 
 
-// script.js
 
 const screens =
 document.querySelectorAll(".screen");
@@ -11,8 +10,6 @@ const music =
 document.getElementById("bgMusic");
 
 music.volume = 0.2;
-
-/* CAMBIAR */
 
 function nextScreen(){
 
@@ -34,15 +31,13 @@ function nextScreen(){
 
 }
 
-/* MOVIL */
-
-document.body.addEventListener(
-"touchstart",
+document.addEventListener(
+"click",
 nextScreen
 );
 
-document.body.addEventListener(
-"click",
+document.addEventListener(
+"touchstart",
 nextScreen
 );
 
@@ -73,23 +68,22 @@ function updateCounter(){
   Math.floor(days / 30);
 
   document.getElementById(
-  "months").innerText = months;
+  "months").textContent = months;
 
   document.getElementById(
-  "days").innerText = days;
+  "days").textContent = days;
 
   document.getElementById(
-  "hours").innerText = hours;
+  "hours").textContent = hours;
 
   document.getElementById(
-  "minutes").innerText = minutes;
+  "minutes").textContent = minutes;
 
   document.getElementById(
-  "seconds").innerText = seconds;
+  "seconds").textContent = seconds;
 }
 
 setInterval(updateCounter,1000);
 
 updateCounter();
-```
 
