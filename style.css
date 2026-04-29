@@ -217,4 +217,12 @@ body{
 
   border-radius:20px;
 }
+
+/* IMPORTANTE */
+
+video,
+img{
+  pointer-events:none;
+}
 ```
+
