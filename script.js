@@ -3,10 +3,10 @@ const screens = document.querySelectorAll(".screen");
 let currentScreen = 0;
 
 const music = document.getElementById("bgMusic");
-music.volume = 0.2;
+if (music) music.volume = 0.2;
 
 /* =========================
-   🔄 NAVEGACIÓN BASE
+   🔄 NAVEGACIÓN
 ========================= */
 
 function goToScreen(index) {
@@ -28,16 +28,13 @@ function prevScreen(event) {
 }
 
 /* =========================
-   📱 TOQUE (AVANZAR)
-   (bloquea botón atrás)
+   📱 TOQUE / CLICK
 ========================= */
 
 function handleInteraction(e) {
 
-  // ❌ si toca el botón de atrás, no avanzar
   if (e.target.closest(".back-btn")) return;
 
-  // 🎵 música solo en primera interacción
   if (music && music.paused) {
     music.play().catch(() => {});
   }
@@ -45,14 +42,10 @@ function handleInteraction(e) {
   nextScreen();
 }
 
-/* 📱 MÓVIL (iPhone + Android) */
-document.addEventListener("touchstart", handleInteraction, { passive: true });
-
-/* 💻 PC */
-document.addEventListener("click", handleInteraction);
+document.addEventListener("pointerdown", handleInteraction);
 
 /* =========================
-   📊 CONTADOR
+   📊 CONTADOR DESDE 29 OCT 2025
 ========================= */
 
 const startDate = new Date("2025-10-29T00:00:00");
@@ -89,6 +82,11 @@ function updateCounter() {
 
 setInterval(updateCounter, 1000);
 updateCounter();
+
+/* =========================
+   📅 CALENDARIO NORMAL (MES ACTUAL)
+========================= */
+
 function generateCalendar() {
 
   const now = new Date();
@@ -112,12 +110,10 @@ function generateCalendar() {
 
   grid.innerHTML = "";
 
-  // espacios vacíos
   for (let i = 0; i < firstDay; i++) {
     grid.innerHTML += `<div></div>`;
   }
 
-  // días
   for (let d = 1; d <= daysInMonth; d++) {
 
     const isToday = d === now.getDate();
@@ -130,4 +126,45 @@ function generateCalendar() {
   }
 }
 
-window.addEventListener("load", generateCalendar);
+/* =========================
+   📅 CALENDARIO DE 6 MESES (TU HISTORIA)
+========================= */
+
+function generateMonths() {
+
+  const months = [
+    "Oct 2025",
+    "Nov 2025",
+    "Dic 2025",
+    "Ene 2026",
+    "Feb 2026",
+    "Mar 2026",
+    "Abr 2026"
+  ];
+
+  const grid = document.getElementById("calendar-grid");
+
+  if (!grid) return;
+
+  grid.innerHTML = "";
+
+  months.forEach((m, i) => {
+
+    let className = "month";
+
+    if (i === 0) className += " start-month";
+    if (i === months.length - 1) className += " end-month";
+
+    grid.innerHTML += `<div class="${className}">${m}</div>`;
+  });
+}
+
+/* =========================
+   INICIO
+========================= */
+
+window.addEventListener("load", () => {
+  updateCounter();
+  generateCalendar();
+  generateMonths();
+});
