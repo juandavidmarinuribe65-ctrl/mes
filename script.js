@@ -76,4 +76,4 @@ function updateCounter(){
 setInterval(updateCounter,1000);
 
 updateCounter();
-```
+
