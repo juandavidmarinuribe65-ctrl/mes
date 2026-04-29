@@ -1,35 +1,62 @@
 const screens = document.querySelectorAll(".screen");
 let currentScreen = 0;
+let locked = false;
 
 const music = document.getElementById("bgMusic");
-let locked = false;
+
+/* =========================
+   CAMBIO DE PANTALLA SEGURO
+========================= */
 
 function nextScreen(){
 
   if(locked) return;
   locked = true;
 
-  if(currentScreen < screens.length - 1){
-    screens[currentScreen].classList.remove("active");
+  const current = screens[currentScreen];
+  const next = screens[currentScreen + 1];
+
+  if(next){
+
+    current.classList.remove("active");
     currentScreen++;
     screens[currentScreen].classList.add("active");
+
+    if(music && music.paused){
+      music.play().catch(()=>{});
+    }
+
+    // asegurar videos
+    document.querySelectorAll("video").forEach(v=>{
+      v.play().catch(()=>{});
+    });
+
   }
 
-  if(music){
-    music.play().catch(()=>{});
-  }
+  setTimeout(()=> locked = false, 400);
+}
+
+/* SOLO 1 EVENTO (IMPORTANTE) */
+document.addEventListener("click", nextScreen);
+
+/* =========================
+   VIDEO FIX IOS
+========================= */
+
+document.addEventListener("click", () => {
 
   document.querySelectorAll("video").forEach(v=>{
+    v.muted = true;
+    v.playsInline = true;
     v.play().catch(()=>{});
   });
 
-  setTimeout(()=> locked = false, 500);
-}
+}, { once:true });
 
-/* UN SOLO EVENTO UNIVERSAL */
-document.addEventListener("pointerdown", nextScreen);
+/* =========================
+   CONTADOR
+========================= */
 
-/* CONTADOR */
 const startDate = new Date("2025-10-29T00:00:00");
 
 function updateCounter(){
@@ -57,28 +84,3 @@ function updateCounter(){
 
 setInterval(updateCounter,1000);
 updateCounter();
-function unlockVideosMobile(){
-
-  const videos = document.querySelectorAll("video");
-
-  videos.forEach(v => {
-
-    v.muted = true;
-    v.setAttribute("playsinline", "");
-    v.setAttribute("webkit-playsinline", "");
-
-    const tryPlay = () => {
-      const p = v.play();
-      if(p !== undefined){
-        p.catch(()=>{});
-      }
-    };
-
-    tryPlay();
-
-  });
-
-}
-
-/* IMPORTANTE: solo una vez, primer toque real */
-document.addEventListener("touchstart", unlockVideosMobile, { once:true });
