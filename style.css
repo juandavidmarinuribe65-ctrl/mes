@@ -4,52 +4,48 @@
   box-sizing:border-box;
 }
 
-html, body{
-  width:100%;
-  height:100%;
-  overflow:hidden;
+body{
   font-family:sans-serif;
+  overflow:hidden;
   background:linear-gradient(to bottom,#9ecfff,#b7d8ff);
   color:white;
 }
 
-/* =========================
-   PANTALLAS (FIX REAL MOBILE)
-========================= */
-
+/* PANTALLAS (FIX REAL) */
 .screen{
-  position:absolute;
-  inset:0;
+  width:100vw;
+  height:100vh;
 
-  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+
+  display:flex;
   justify-content:center;
   align-items:center;
 
-  padding:20px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s ease;
 }
 
+/* SOLO UNA ACTIVA */
 .screen.active{
-  display:flex;
+  opacity:1;
+  pointer-events:auto;
   z-index:10;
 }
 
-/* =========================
-   TOQUE
-========================= */
-
+/* TEXTO */
 .tap-text{
   position:fixed;
   bottom:30px;
   width:100%;
   text-align:center;
   opacity:.8;
-  z-index:999;
 }
 
-/* =========================
-   CARD
-========================= */
-
+/* CARD */
 .card{
   width:90%;
   max-width:400px;
@@ -60,10 +56,29 @@ html, body{
   backdrop-filter:blur(10px);
 }
 
-/* =========================
-   CONTADOR
-========================= */
+/* CORAZÓN */
+.heart{
+  font-size:50px;
+  animation:pulse 1.5s infinite;
+}
 
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+  100%{transform:scale(1);}
+}
+
+/* FECHAS */
+.special{
+  background:white;
+  color:#6da8e6;
+  padding:15px;
+  border-radius:20px;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+/* CONTADOR */
 .counter{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -77,69 +92,43 @@ html, body{
   border-radius:15px;
 }
 
-/* =========================
-   CARTA
-========================= */
-
-.letter-card{
-  width:90%;
-  max-width:400px;
-  background:white;
-  color:#444;
-  padding:30px;
-  border-radius:30px;
-}
-
-/* =========================
-   COLLAGE (ESTABLE EN CEL)
-========================= */
-
+/* COLLAGE */
 .collage{
   width:100%;
-  height:100%;
-
+  height:100vh;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   grid-template-rows:repeat(3,1fr);
-
   place-items:center;
   gap:8px;
+  padding:20px;
 }
 
+/* centro */
 .center{
   grid-column:2;
   grid-row:2;
 
-  width:130px;
-  height:130px;
-  border-radius:50%;
+  width:140px;
+  height:140px;
 
+  border-radius:50%;
   background:rgba(255,255,255,.25);
   backdrop-filter:blur(10px);
 
   display:flex;
   justify-content:center;
   align-items:center;
+
   text-align:center;
-
-  z-index:2;
+  font-weight:bold;
+  z-index:10;
 }
 
+/* media */
 .item{
-  width:80px;
-  height:105px;
+  width:85px;
+  height:110px;
   object-fit:cover;
-  border-radius:12px;
+  border-radius:15px;
 }
-
-/* posiciones */
-.i1{grid-column:1;grid-row:1;}
-.i2{grid-column:2;grid-row:1;}
-.i3{grid-column:3;grid-row:1;}
-
-.i4{grid-column:1;grid-row:2;}
-.i5{grid-column:3;grid-row:2;}
-
-.i6{grid-column:1;grid-row:3;}
-.i7{grid-column:2;grid-row:3;}
-.i8{grid-column:3;grid-row:3;}
