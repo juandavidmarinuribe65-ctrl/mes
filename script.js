@@ -1,4 +1,5 @@
 
+
 const screens =
 document.querySelectorAll(".screen");
 
@@ -7,15 +8,11 @@ let currentScreen = 0;
 const music =
 document.getElementById("bgMusic");
 
-/* VOLUMEN */
-
 music.volume = 0.2;
 
-/* TOCAR PANTALLA */
-
-document.body.addEventListener(
+document.addEventListener(
 "click",
-() => {
+function(){
 
   if(music.paused){
     music.play();
@@ -34,8 +31,6 @@ document.body.addEventListener(
   }
 
 });
-
-/* CONTADOR */
 
 const startDate =
 new Date("2025-10-29T00:00:00");
@@ -81,3 +76,4 @@ setInterval(updateCounter,1000);
 
 updateCounter();
 ```
+
