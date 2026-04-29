@@ -1,161 +1,115 @@
-
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
+html, body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select:none;
+}
+
 body{
   font-family:sans-serif;
-  overflow:hidden;
-
-  background:
-  linear-gradient(
-    to bottom,
-    #9ecfff,
-    #b7d8ff
-  );
-
+  background:linear-gradient(to bottom,#9ecfff,#b7d8ff);
   color:white;
 }
 
 /* PANTALLAS */
-
 .screen{
   width:100vw;
   height:100vh;
-
-  display:none;
-
-  justify-content:center;
-  align-items:center;
-
   position:fixed;
-
   top:0;
   left:0;
 
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
   padding:20px;
+
+  opacity:0;
+  transform:scale(0.97);
+  transition:all .6s ease;
+
+  pointer-events:none;
 }
 
 .active{
-  display:flex;
+  opacity:1;
+  transform:scale(1);
+  pointer-events:auto;
   z-index:10;
 }
-```
 
-
-/* TEXTO */
-
+/* TEXTO TOQUE */
 .tap-text{
   position:fixed;
-
-  bottom:30px;
-
+  bottom:25px;
   width:100%;
-
   text-align:center;
-
   opacity:.8;
-
   z-index:999;
+  pointer-events:none;
 }
 
 /* CARD */
-
 .card{
   width:90%;
   max-width:400px;
-
-  background:
-  rgba(255,255,255,.2);
-
+  background:rgba(255,255,255,.2);
   padding:30px;
-
   border-radius:30px;
-
   text-align:center;
-
   backdrop-filter:blur(10px);
 }
 
-.card h1{
-  margin:20px 0;
-  font-size:40px;
-}
+.card h1{ font-size:40px; margin:20px 0; }
+.date{ opacity:.9; }
 
-.date{
-  opacity:.9;
-}
-
-/* CORAZON */
-
+/* ❤️ CORAZÓN */
 .heart{
-  font-size:50px;
-
+  font-size:60px;
   margin-top:20px;
-
-  animation:pulse 1.5s infinite;
+  animation:heartbeat 1.2s infinite ease-in-out;
 }
 
-@keyframes pulse{
-
-  0%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.2);
-  }
-
-  100%{
-    transform:scale(1);
-  }
-
+@keyframes heartbeat{
+  0%{transform:scale(1);}
+  25%{transform:scale(1.15);}
+  40%{transform:scale(1);}
+  60%{transform:scale(1.2);}
+  100%{transform:scale(1);}
 }
 
 /* FECHAS */
-
 .special{
-
   background:white;
-
   color:#6da8e6;
-
   padding:15px;
-
   border-radius:20px;
-
   margin-top:15px;
-
   font-weight:bold;
 }
 
-.big{
-  font-size:20px;
-}
+.big{ font-size:20px; }
 
 /* CONTADOR */
-
 .counter{
-
   display:grid;
-
-  grid-template-columns:
-  repeat(2,1fr);
-
+  grid-template-columns:repeat(2,1fr);
   gap:15px;
-
   margin-top:20px;
 }
 
 .counter-box{
-
-  background:
-  rgba(255,255,255,.2);
-
+  background:rgba(255,255,255,.2);
   padding:15px;
-
   border-radius:20px;
 }
 
@@ -165,137 +119,87 @@ body{
 }
 
 /* CARTA */
-
 .letter-card{
-
   width:90%;
   max-width:400px;
-
   background:white;
-
   color:#444;
-
   padding:30px;
-
   border-radius:30px;
-
   line-height:1.7;
 }
 
-/* GALERIA */
-
+/* COLLAGE */
 .love-collage{
-
   width:100%;
   height:100vh;
-
   position:relative;
-
   overflow:hidden;
+  padding:20px;
 }
 
 /* CENTRO */
-
 .center-text{
-
   position:absolute;
-
   top:50%;
   left:50%;
+  transform:translate(-50%,-50%);
 
-  transform:
-  translate(-50%,-50%);
-
-  width:220px;
-  height:220px;
-
+  width:200px;
+  height:200px;
   border-radius:50%;
-
-  background:
-  rgba(255,255,255,.2);
-
-  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(12px);
 
   display:flex;
-
   justify-content:center;
   align-items:center;
 
   text-align:center;
-
-  padding:20px;
-
-  font-size:28px;
+  font-size:22px;
   font-weight:bold;
 
-  z-index:10;
+  z-index:5;
+  pointer-events:none;
 }
 
-/* FOTOS Y VIDEOS */
-
+/* MULTIMEDIA */
 .pic{
-
   position:absolute;
-
-  width:120px;
-  height:170px;
-
+  width:110px;
+  height:150px;
   object-fit:cover;
-
-  border-radius:20px;
-
-  box-shadow:
-  0 0 20px rgba(0,0,0,.2);
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.25);
+  z-index:2;
 }
 
 /* POSICIONES */
-
-.p1{
-  top:30px;
-  left:20px;
-}
-
-.p2{
-  top:40px;
-  right:20px;
-}
+.p1{ top:60px; left:40px; }
+.p2{ top:60px; right:40px; }
 
 .p3{
-  top:240px;
-  left:10px;
+  top:50%;
+  left:20px;
+  transform:translateY(-50%);
 }
 
 .p4{
-  top:250px;
-  right:10px;
-}
-
-.p5{
-  bottom:40px;
-  left:25px;
-}
-
-.p6{
-  bottom:50px;
-  right:25px;
+  top:50%;
+  right:20px;
+  transform:translateY(-50%);
 }
 
 .p7{
-  bottom:220px;
+  top:50%;
   left:50%;
-  transform:translateX(-50%);
+  transform:translate(-50%,-50%) scale(1.05);
+  z-index:3;
 }
-```
 
+.p5{ bottom:60px; left:50px; }
+.p6{ bottom:60px; right:50px; }
 
-/* IMPORTANTE */
-
-video,
-img{
+video, img{
   pointer-events:none;
 }
-.tap-text{
-  pointer-events: none;
-}
-
-
