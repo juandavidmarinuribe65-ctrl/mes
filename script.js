@@ -4,17 +4,18 @@ let currentScreen = 0;
 const music = document.getElementById("bgMusic");
 music.volume = 0.2;
 
-/* 🔁 CAMBIO DE PANTALLA */
+/* 📱 AVANZAR */
 function nextScreen() {
   goToScreen(currentScreen + 1);
 }
 
+/* ⬅️ VOLVER */
 function prevScreen(event) {
   if (event) event.stopPropagation();
   goToScreen(currentScreen - 1);
 }
 
-/* 🔄 NAVEGACIÓN SEGURA */
+/* 🔄 CAMBIO SEGURO */
 function goToScreen(index) {
 
   if (index < 0 || index >= screens.length) return;
@@ -28,7 +29,7 @@ function goToScreen(index) {
   screens[currentScreen].classList.add("active");
 }
 
-/* 📱 TOCAR PANTALLA = ADELANTE */
+/* 📱 TOCAR = AVANZAR */
 document.addEventListener("pointerdown", nextScreen);
 
 
