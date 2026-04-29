@@ -13,12 +13,11 @@ function nextScreen(){
   if(locked) return;
   locked = true;
 
-  const current = screens[currentScreen];
   const next = screens[currentScreen + 1];
 
   if(next){
 
-    current.classList.remove("active");
+    screens[currentScreen].classList.remove("active");
     currentScreen++;
     screens[currentScreen].classList.add("active");
 
@@ -26,32 +25,39 @@ function nextScreen(){
       music.play().catch(()=>{});
     }
 
-    // asegurar videos
+    // asegurar reproducción de videos
     document.querySelectorAll("video").forEach(v=>{
+      v.muted = true;
+      v.playsInline = true;
       v.play().catch(()=>{});
     });
-
   }
 
   setTimeout(()=> locked = false, 400);
 }
 
-/* SOLO 1 EVENTO (IMPORTANTE) */
-document.addEventListener("click", nextScreen);
+/* SOLO UN EVENTO (IMPORTANTE PARA CEL) */
+document.addEventListener("click", nextScreen, { passive:true });
 
 /* =========================
-   VIDEO FIX IOS
+   ACTIVAR MEDIA EN PRIMER TOQUE
 ========================= */
 
-document.addEventListener("click", () => {
+function enableMedia(){
+
+  if(music && music.paused){
+    music.play().catch(()=>{});
+  }
 
   document.querySelectorAll("video").forEach(v=>{
     v.muted = true;
     v.playsInline = true;
     v.play().catch(()=>{});
   });
+}
 
-}, { once:true });
+/* solo primera interacción */
+document.addEventListener("click", enableMedia, { once:true });
 
 /* =========================
    CONTADOR
