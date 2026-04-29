@@ -1,5 +1,6 @@
-
-/* style.css */
+/* =========================
+   RESET
+========================= */
 
 *{
   margin:0;
@@ -9,32 +10,25 @@
 
 body{
   font-family:sans-serif;
-
   overflow:hidden;
 
-  background:
-  linear-gradient(
-    to bottom,
-    #9ecfff,
-    #b7d8ff
-  );
-
+  background: linear-gradient(to bottom, #9ecfff, #b7d8ff);
   color:white;
 }
 
-/* PANTALLAS */
+/* =========================
+   PANTALLAS
+========================= */
 
 .screen{
   width:100vw;
   height:100vh;
 
   display:none;
-
   justify-content:center;
   align-items:center;
 
   position:fixed;
-
   top:0;
   left:0;
 
@@ -45,39 +39,32 @@ body{
   display:flex;
   z-index:10;
 }
-```
 
-
-/* TOCA */
+/* =========================
+   TEXTO INICIAL
+========================= */
 
 .tap-text{
   position:fixed;
-
   bottom:30px;
-
   width:100%;
-
   text-align:center;
-
   opacity:.8;
-
   z-index:999;
 }
 
-/* CARD */
+/* =========================
+   CARD PRINCIPAL
+========================= */
 
 .card{
-
   width:90%;
   max-width:400px;
 
-  background:
-  rgba(255,255,255,.2);
-
+  background:rgba(255,255,255,.2);
   padding:30px;
 
   border-radius:30px;
-
   text-align:center;
 
   backdrop-filter:blur(10px);
@@ -92,46 +79,35 @@ body{
   opacity:.9;
 }
 
-/* CORAZON */
+/* =========================
+   CORAZÓN
+========================= */
 
 .heart{
   font-size:50px;
-
   margin-top:20px;
 
   animation:pulse 1.5s infinite;
 }
 
 @keyframes pulse{
-
-  0%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.2);
-  }
-
-  100%{
-    transform:scale(1);
-  }
-
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.2); }
+  100%{ transform:scale(1); }
 }
 
-/* FECHAS */
+/* =========================
+   FECHAS
+========================= */
 
 .special{
-
   background:white;
-
   color:#6da8e6;
 
   padding:15px;
-
   border-radius:20px;
 
   margin-top:15px;
-
   font-weight:bold;
 }
 
@@ -139,27 +115,21 @@ body{
   font-size:20px;
 }
 
-/* CONTADOR */
+/* =========================
+   CONTADOR
+========================= */
 
 .counter{
-
   display:grid;
-
-  grid-template-columns:
-  repeat(2,1fr);
-
+  grid-template-columns:repeat(2,1fr);
   gap:15px;
 
   margin-top:20px;
 }
 
 .counter-box{
-
-  background:
-  rgba(255,255,255,.2);
-
+  background:rgba(255,255,255,.2);
   padding:15px;
-
   border-radius:20px;
 }
 
@@ -168,26 +138,26 @@ body{
   font-weight:bold;
 }
 
-/* CARTA */
+/* =========================
+   CARTA
+========================= */
 
 .letter-card{
-
   width:90%;
   max-width:400px;
 
   background:white;
-
   color:#444;
 
   padding:30px;
-
   border-radius:30px;
 
   line-height:1.7;
 }
 
-/* GALERIA */
-
+/* =========================
+   COLLAGE
+========================= */
 
 .collage{
   width:100%;
@@ -239,41 +209,42 @@ body{
 
   box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
-/* IMPORTANTE */
 
-img,
-video{
-  pointer-events:none;
-}
-
+/* =========================
+   BOTÓN ATRÁS
+========================= */
 
 .back-btn{
-  position: absolute;
-  top: 15px;
-  left: 15px;
+  position:absolute;
+  top:15px;
+  left:15px;
 
-  font-size: 32px;
-  color: white;
+  width:40px;
+  height:40px;
 
-  z-index: 9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-  opacity: 0.9;
-  cursor: pointer;
+  font-size:32px;
+  color:white;
 
-  width: 40px;
-  height: 40px;
+  background:rgba(0,0,0,0.2);
+  border-radius:50%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(0,0,0,0.2);
-  border-radius: 50%;
+  z-index:9999;
 }
+
+/* =========================
+   CALENDARIO
+========================= */
+
 .calendar{
-  margin-top:20px;
+  margin-top:15px;
+
   background:rgba(255,255,255,0.15);
   backdrop-filter:blur(10px);
+
   border-radius:20px;
   padding:15px;
 }
@@ -282,26 +253,103 @@ video{
   text-align:center;
   font-weight:bold;
   margin-bottom:10px;
-  color:white;
+  font-size:14px;
 }
 
 #calendar-grid{
   display:grid;
   grid-template-columns:repeat(7, 1fr);
   gap:5px;
+
   text-align:center;
   font-size:12px;
-  color:white;
 }
 
 .day{
   padding:6px;
   border-radius:8px;
+  opacity:0.9;
 }
 
 .today{
   background:red;
   color:white;
   font-weight:bold;
+
+  box-shadow:0 0 10px rgba(255,0,0,0.6);
 }
 
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+  position:relative;
+
+  height:110px;
+  margin-top:15px;
+
+  background:rgba(255,255,255,0.12);
+  border-radius:20px;
+
+  backdrop-filter:blur(10px);
+  padding:15px;
+}
+
+/* línea */
+.line{
+  position:absolute;
+  top:50%;
+  left:10%;
+  right:10%;
+
+  height:4px;
+  background:white;
+
+  opacity:0.6;
+  transform:translateY(-50%);
+  border-radius:10px;
+}
+
+/* puntos */
+.point{
+  position:absolute;
+
+  font-size:11px;
+  color:white;
+
+  transform:translateX(-50%);
+  text-align:center;
+}
+
+.start{
+  left:10%;
+  top:20%;
+
+  background:red;
+  padding:4px 6px;
+  border-radius:8px;
+}
+
+.middle{
+  left:50%;
+  top:60%;
+}
+
+.end{
+  left:90%;
+  top:20%;
+
+  background:red;
+  padding:4px 6px;
+  border-radius:8px;
+}
+
+/* =========================
+   IMPORTANTE
+========================= */
+
+img,
+video{
+  pointer-events:none;
+}
