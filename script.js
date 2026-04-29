@@ -89,3 +89,45 @@ function updateCounter() {
 
 setInterval(updateCounter, 1000);
 updateCounter();
+function generateCalendar() {
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+
+  const title = document.getElementById("calendar-title");
+  const grid = document.getElementById("calendar-grid");
+
+  if (!title || !grid) return;
+
+  const months = [
+    "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+    "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+  ];
+
+  title.textContent = `${months[month]} ${year}`;
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  grid.innerHTML = "";
+
+  // espacios vacíos
+  for (let i = 0; i < firstDay; i++) {
+    grid.innerHTML += `<div></div>`;
+  }
+
+  // días
+  for (let d = 1; d <= daysInMonth; d++) {
+
+    const isToday = d === now.getDate();
+
+    grid.innerHTML += `
+      <div class="day ${isToday ? "today" : ""}">
+        ${d}
+      </div>
+    `;
+  }
+}
+
+window.addEventListener("load", generateCalendar);
