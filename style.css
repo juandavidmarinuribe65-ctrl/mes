@@ -294,5 +294,8 @@ video,
 img{
   pointer-events:none;
 }
-```
+.tap-text{
+  pointer-events: none;
+}
+
 
