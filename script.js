@@ -2,18 +2,13 @@ const screens = document.querySelectorAll(".screen");
 let currentScreen = 0;
 
 const music = document.getElementById("bgMusic");
+let locked = false;
 
-let canClick = true;
-
-/* =========================
-   NAVEGACIÓN SEGURA
-========================= */
-
+/* CAMBIO DE PANTALLA */
 function nextScreen(){
 
-  if(!canClick) return;
-
-  canClick = false;
+  if(locked) return;
+  locked = true;
 
   if(currentScreen < screens.length - 1){
     screens[currentScreen].classList.remove("active");
@@ -21,28 +16,28 @@ function nextScreen(){
     screens[currentScreen].classList.add("active");
   }
 
-  // audio SOLO cuando hay interacción real
   if(music){
     music.play().catch(()=>{});
   }
 
-  // anti doble toque (iOS + Android)
-  setTimeout(()=> {
-    canClick = true;
-  }, 500);
+  setTimeout(()=> locked = false, 500);
 }
 
-/* =========================
-   SOLO UN EVENTO (IMPORTANTE)
-========================= */
-
-/* usamos pointerdown (sirve para PC + móvil) */
 document.addEventListener("pointerdown", nextScreen);
 
-/* =========================
-   CONTADOR
-========================= */
+/* VIDEOS FIX iOS/ANDROID */
+function playVideos(){
+  document.querySelectorAll("video").forEach(v=>{
+    v.muted = true;
+    v.playsInline = true;
+    v.play().catch(()=>{});
+  });
+}
 
+/* activa videos en primer toque */
+document.addEventListener("pointerdown", playVideos, { once:true });
+
+/* CONTADOR */
 const startDate = new Date("2025-10-29T00:00:00");
 
 function updateCounter(){
@@ -51,9 +46,9 @@ function updateCounter(){
   const diff = now - startDate;
 
   const seconds = Math.floor(diff / 1000);
-  const minutes = Math.floor(diff / (1000*60));
-  const hours = Math.floor(diff / (1000*60*60));
-  const days = Math.floor(diff / (1000*60*60*24));
+  const minutes = Math.floor(diff / 60000);
+  const hours = Math.floor(diff / 3600000);
+  const days = Math.floor(diff / 86400000);
   const months = Math.floor(days / 30);
 
   const set = (id,val)=>{
