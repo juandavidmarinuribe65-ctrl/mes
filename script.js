@@ -3,10 +3,7 @@ let currentScreen = 0;
 
 const music = document.getElementById("bgMusic");
 
-/* =========================
-   NAVEGACIÓN
-========================= */
-
+/* NAVEGACIÓN */
 function nextScreen(){
 
   if(currentScreen < screens.length - 1){
@@ -15,7 +12,6 @@ function nextScreen(){
     screens[currentScreen].classList.add("active");
   }
 
-  // música SOLO cuando ya hay interacción
   if(music && music.paused){
     music.play().catch(()=>{});
   }
@@ -24,10 +20,7 @@ function nextScreen(){
 document.addEventListener("click", nextScreen);
 document.addEventListener("touchstart", nextScreen);
 
-/* =========================
-   CONTADOR SEGURO
-========================= */
-
+/* CONTADOR */
 const startDate = new Date("2025-10-29T00:00:00");
 
 function updateCounter(){
