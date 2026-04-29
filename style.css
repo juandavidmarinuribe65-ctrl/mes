@@ -1,5 +1,264 @@
 
-/* RESET */
+volvi a como lo tenia antes, necesito de que se pueda volver a tocar para pasar porque no me deja, ya te lo paso
+
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Laura ❤️ Juan</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- MUSICA -->
+  <audio id="bgMusic" loop>
+    <source src="cancion.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- TOCAR -->
+  <div class="tap-text">
+    toca la pantalla ✨
+  </div>
+
+  <!-- PANTALLA 1 -->
+  <section class="screen active">
+
+    <div class="card">
+
+      <h2>Feliz Mesiversario</h2>
+
+      <h1>Laura ❤️ Juan</h1>
+
+      <p class="date">
+        29 • Octubre • 2025
+      </p>
+
+      <div class="heart">
+        ❤️
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PANTALLA 2 -->
+  <section class="screen">
+
+    <div class="card">
+
+      <h2>Nuestra Historia ❤️</h2>
+
+      <div class="special">
+        29 Octubre 2025 ❤️
+      </div>
+
+      <div class="special big">
+        29 Abril 2026 — 6 Meses 💖
+      </div>
+
+      <div class="counter">
+
+        <div class="counter-box">
+          <span id="months">0</span>
+          <p>Meses</p>
+        </div>
+
+        <div class="counter-box">
+          <span id="days">0</span>
+          <p>Días</p>
+        </div>
+
+        <div class="counter-box">
+          <span id="hours">0</span>
+          <p>Horas</p>
+        </div>
+
+        <div class="counter-box">
+          <span id="minutes">0</span>
+          <p>Minutos</p>
+        </div>
+
+        <div class="counter-box">
+          <span id="seconds">0</span>
+          <p>Segundos</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PANTALLA 3 -->
+  <section class="screen">
+
+    <div class="letter-card">
+
+      <h2>Para Laura ❤️</h2>
+
+      <p>
+       Hola, mi princesa bella, quiero agradecerte por estos 6 meses tan lindos. Estoy aún aprendiendo a ser el novio adecuado para ti, y agradezco tu paciencia. Créeme que esto no lo quisiera pasar con nadie más, quiero pasar toda mi vida contigo si se me es posible, aprender a tu lado, disfrutar a tu lado, llorar a tu lado, amar a tu lado, reír a tu lado. Eres la mejor novia del mundo y eres la persona correcta para mí. Quiero formar una familia contigo. Estoy orgulloso de ti mi princesa, eres la mejor mujer del mundo. Quiero verte crecer como persona porque de estatura lo dudo.Aún recuerdo ese 29 de octubre, lloramos juntos pero fue de alegría, de no creer que llegara ese momento después de tantas cosas, de dejar nuestras diferencias a un lado. Te amo mucho mi niña hermosa, quisiera si me lo permitieras seguir a tu lado.Te amo mucho mi señorita licenciada Laura ❤️
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- PANTALLA 4 -->
+ 
+<!-- REEMPLAZA SOLO LA PANTALLA 4 POR ESTO -->
+
+<section class="screen">
+
+  <div class="love-collage">
+
+    <div class="center-text">
+      te amo mucho princesa ❤️
+    </div>
+
+    <img class="pic p1" src="foto1.jpeg">
+
+    <img class="pic p2" src="foto2.jpeg">
+
+    <video class="pic p3"
+    src="video1.mp4"
+    autoplay
+    muted
+    loop
+    playsinline>
+    </video>
+
+    <video class="pic p4"
+    src="video2.mp4"
+    autoplay
+    muted
+    loop
+    playsinline>
+    </video>
+
+    <video class="pic p5"
+    src="video3.mp4"
+    autoplay
+    muted
+    loop
+    playsinline>
+    </video>
+
+    <video class="pic p6"
+    src="video4.mp4"
+    autoplay
+    muted
+    loop
+    playsinline>
+    </video>
+
+    <video class="pic p7"
+    src="video5.mp4"
+    autoplay
+    muted
+    loop
+    playsinline>
+    </video>
+
+  </div>
+
+</section>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
+```
+
+script 
+const screens =
+document.querySelectorAll(".screen");
+
+let currentScreen = 0;
+
+const music =
+document.getElementById("bgMusic");
+
+music.volume = 0.2;
+
+function nextScreen(){
+
+  if(music.paused){
+    music.play();
+  }
+
+  if(currentScreen <
+  screens.length - 1){
+
+    screens[currentScreen]
+    .classList.remove("active");
+
+    currentScreen++;
+
+    screens[currentScreen]
+    .classList.add("active");
+  }
+
+}
+
+document.body.addEventListener("pointerdown", nextScreen);
+
+/* CONTADOR */
+
+const startDate =
+new Date("2025-10-29T00:00:00");
+
+function updateCounter(){
+
+  const now = new Date();
+
+  const diff = now - startDate;
+
+  const seconds =
+  Math.floor(diff / 1000);
+
+  const minutes =
+  Math.floor(diff / (1000*60));
+
+  const hours =
+  Math.floor(diff / (1000*60*60));
+
+  const days =
+  Math.floor(diff / (1000*60*60*24));
+
+  const months =
+  Math.floor(days / 30);
+
+  document.getElementById(
+  "months").textContent = months;
+
+  document.getElementById(
+  "days").textContent = days;
+
+  document.getElementById(
+  "hours").textContent = hours;
+
+  document.getElementById(
+  "minutes").textContent = minutes;
+
+  document.getElementById(
+  "seconds").textContent = seconds;
+}
+
+setInterval(updateCounter,1000);
+
+updateCounter();
+
+/* style.css */
+
 *{
   margin:0;
   padding:0;
@@ -8,22 +267,32 @@
 
 body{
   font-family:sans-serif;
+
   overflow:hidden;
 
-  background: linear-gradient(to bottom, #9ecfff, #b7d8ff);
+  background:
+  linear-gradient(
+    to bottom,
+    #9ecfff,
+    #b7d8ff
+  );
+
   color:white;
 }
 
 /* PANTALLAS */
+
 .screen{
   width:100vw;
   height:100vh;
 
   display:none;
+
   justify-content:center;
   align-items:center;
 
   position:fixed;
+
   top:0;
   left:0;
 
@@ -34,65 +303,93 @@ body{
   display:flex;
   z-index:10;
 }
+```
 
-/* TEXTO TOQUE */
+
+/* TOCA */
+
 .tap-text{
   position:fixed;
+
   bottom:30px;
+
   width:100%;
+
   text-align:center;
+
   opacity:.8;
+
   z-index:999;
 }
 
 /* CARD */
+
 .card{
+
   width:90%;
   max-width:400px;
 
-  background:rgba(255,255,255,.2);
+  background:
+  rgba(255,255,255,.2);
+
   padding:30px;
 
   border-radius:30px;
+
   text-align:center;
 
   backdrop-filter:blur(10px);
 }
 
-/* TITULO */
 .card h1{
   font-size:40px;
   margin:20px 0;
 }
 
-/* FECHA */
 .date{
   opacity:.9;
 }
 
-/* CORAZÓN */
+/* CORAZON */
+
 .heart{
   font-size:50px;
+
   margin-top:20px;
 
   animation:pulse 1.5s infinite;
 }
 
 @keyframes pulse{
-  0%{ transform:scale(1); }
-  50%{ transform:scale(1.2); }
-  100%{ transform:scale(1); }
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.2);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
 }
 
 /* FECHAS */
+
 .special{
+
   background:white;
+
   color:#6da8e6;
 
   padding:15px;
+
   border-radius:20px;
 
   margin-top:15px;
+
   font-weight:bold;
 }
 
@@ -101,17 +398,26 @@ body{
 }
 
 /* CONTADOR */
+
 .counter{
+
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+  repeat(2,1fr);
+
   gap:15px;
 
   margin-top:20px;
 }
 
 .counter-box{
-  background:rgba(255,255,255,.2);
+
+  background:
+  rgba(255,255,255,.2);
+
   padding:15px;
+
   border-radius:20px;
 }
 
@@ -121,43 +427,83 @@ body{
 }
 
 /* CARTA */
+
 .letter-card{
+
   width:90%;
   max-width:400px;
 
   background:white;
+
   color:#444;
 
   padding:30px;
+
   border-radius:30px;
 
   line-height:1.7;
 }
 
-/* BOTÓN ATRÁS */
-.back-btn{
-  position:absolute;
-  top:20px;
-  left:20px;
+/* GALERIA */
 
-  width:40px;
-  height:40px;
+
+.collage{
+  width:100%;
+  height:100vh;
+
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  grid-template-rows:repeat(3, 1fr);
+
+  place-items:center;
+
+  padding:40px 20px;
+  gap:15px;
+
+  position:relative;
+}
+
+/* centro */
+.center{
+  grid-column:2;
+  grid-row:2;
+
+  width:120px;
+  height:120px;
+
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(10px);
+
+  border-radius:50%;
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  font-size:32px;
-  color:white;
+  text-align:center;
+  font-weight:bold;
+  font-size:16px;
 
-  background:rgba(0,0,0,0.2);
-  border-radius:50%;
+  z-index:5;
+}
 
-  z-index:9999;
+/* items */
+.item{
+  width:90px;
+  height:120px;
+
+  object-fit:cover;
+  border-radius:15px;
+
+  box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 
 /* IMPORTANTE */
+
 img,
 video{
   pointer-events:none;
+}
+```
+
 }
