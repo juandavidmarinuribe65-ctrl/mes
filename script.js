@@ -1,4 +1,3 @@
-
 const screens = document.querySelectorAll(".screen");
 let currentScreen = 0;
 
@@ -12,25 +11,21 @@ function nextScreen() {
   if (locked) return;
   locked = true;
 
-  // música solo inicia con interacción
+  // música solo inicia con interacción real
   if (music.paused) {
     music.play().catch(() => {});
   }
 
   if (currentScreen < screens.length - 1) {
-
     screens[currentScreen].classList.remove("active");
     currentScreen++;
     screens[currentScreen].classList.add("active");
-
   }
 
-  setTimeout(() => {
-    locked = false;
-  }, 500);
+  setTimeout(() => locked = false, 600);
 }
 
-/* CLICK + TOUCH FIX (UNO SOLO - ESTABLE) */
+/* 🔥 FUNCIONA EN ANDROID + IPHONE + PC */
 document.body.addEventListener("pointerdown", nextScreen);
 
 
