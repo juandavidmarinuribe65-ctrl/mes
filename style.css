@@ -239,6 +239,10 @@ body{
    CALENDARIO
 ========================= */
 
+/* =========================
+   CALENDARIO DE MESES (6 MESES)
+========================= */
+
 .calendar{
   margin-top:15px;
 
@@ -256,36 +260,44 @@ body{
   font-size:14px;
 }
 
+/* meses en fila */
 #calendar-grid{
-  display:grid;
-  grid-template-columns:repeat(7, 1fr);
-  gap:5px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+}
 
+/* cada mes */
+.month{
+  flex:1;
+  padding:10px 5px;
+  border-radius:10px;
+
+  font-size:10px;
   text-align:center;
-  font-size:12px;
+
+  background:rgba(255,255,255,0.2);
 }
 
-.day{
-  padding:6px;
-  border-radius:8px;
-  opacity:0.9;
-  color:white;
-}
-
-.today{
+/* inicio y fin en rojo */
+.start-month{
   background:red;
   font-weight:bold;
-  box-shadow:0 0 10px rgba(255,0,0,0.6);
+}
+
+.end-month{
+  background:red;
+  font-weight:bold;
 }
 
 /* =========================
-   TIMELINE
+   TIMELINE REAL DEL VIAJE
 ========================= */
 
 .timeline{
   position:relative;
-
-  height:110px;
+  height:120px;
   margin-top:15px;
 
   background:rgba(255,255,255,0.12);
@@ -295,7 +307,7 @@ body{
   padding:15px;
 }
 
-/* línea */
+/* línea principal */
 .line{
   position:absolute;
   top:50%;
@@ -304,8 +316,24 @@ body{
 
   height:4px;
   background:white;
+  opacity:0.7;
 
-  opacity:0.6;
+  transform:translateY(-50%);
+  border-radius:10px;
+}
+
+/* progreso visual */
+.progress{
+  position:absolute;
+  top:50%;
+  left:10%;
+
+  height:4px;
+  width:100%;
+
+  background:red;
+  opacity:0.4;
+
   transform:translateY(-50%);
   border-radius:10px;
 }
@@ -313,7 +341,6 @@ body{
 /* puntos */
 .point{
   position:absolute;
-
   font-size:11px;
   color:white;
 
@@ -323,7 +350,7 @@ body{
 
 .start{
   left:10%;
-  top:20%;
+  top:15%;
 
   background:red;
   padding:4px 6px;
@@ -337,7 +364,7 @@ body{
 
 .end{
   left:90%;
-  top:20%;
+  top:15%;
 
   background:red;
   padding:4px 6px;
