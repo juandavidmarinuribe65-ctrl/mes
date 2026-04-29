@@ -1,7 +1,5 @@
-/* =========================
-   RESET
-========================= */
 
+/* RESET */
 *{
   margin:0;
   padding:0;
@@ -16,10 +14,7 @@ body{
   color:white;
 }
 
-/* =========================
-   PANTALLAS
-========================= */
-
+/* PANTALLAS */
 .screen{
   width:100vw;
   height:100vh;
@@ -40,10 +35,7 @@ body{
   z-index:10;
 }
 
-/* =========================
-   TEXTO INICIAL
-========================= */
-
+/* TEXTO TOQUE */
 .tap-text{
   position:fixed;
   bottom:30px;
@@ -53,10 +45,7 @@ body{
   z-index:999;
 }
 
-/* =========================
-   CARD PRINCIPAL
-========================= */
-
+/* CARD */
 .card{
   width:90%;
   max-width:400px;
@@ -70,19 +59,18 @@ body{
   backdrop-filter:blur(10px);
 }
 
+/* TITULO */
 .card h1{
   font-size:40px;
   margin:20px 0;
 }
 
+/* FECHA */
 .date{
   opacity:.9;
 }
 
-/* =========================
-   CORAZÓN
-========================= */
-
+/* CORAZÓN */
 .heart{
   font-size:50px;
   margin-top:20px;
@@ -96,10 +84,7 @@ body{
   100%{ transform:scale(1); }
 }
 
-/* =========================
-   FECHAS
-========================= */
-
+/* FECHAS */
 .special{
   background:white;
   color:#6da8e6;
@@ -115,10 +100,7 @@ body{
   font-size:20px;
 }
 
-/* =========================
-   CONTADOR
-========================= */
-
+/* CONTADOR */
 .counter{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -138,10 +120,7 @@ body{
   font-weight:bold;
 }
 
-/* =========================
-   CARTA
-========================= */
-
+/* CARTA */
 .letter-card{
   width:90%;
   max-width:400px;
@@ -155,65 +134,7 @@ body{
   line-height:1.7;
 }
 
-/* =========================
-   COLLAGE
-========================= */
-
-.collage{
-  width:100%;
-  height:100vh;
-
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  grid-template-rows:repeat(3, 1fr);
-
-  place-items:center;
-
-  padding:40px 20px;
-  gap:15px;
-
-  position:relative;
-}
-
-/* centro */
-.center{
-  grid-column:2;
-  grid-row:2;
-
-  width:120px;
-  height:120px;
-
-  background:rgba(255,255,255,.25);
-  backdrop-filter:blur(10px);
-
-  border-radius:50%;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  text-align:center;
-  font-weight:bold;
-  font-size:16px;
-
-  z-index:5;
-}
-
-/* items */
-.item{
-  width:90px;
-  height:120px;
-
-  object-fit:cover;
-  border-radius:15px;
-
-  box-shadow:0 5px 15px rgba(0,0,0,.2);
-}
-
-/* =========================
-   BOTÓN ATRÁS
-========================= */
-
+/* BOTÓN ATRÁS */
 .back-btn{
   position:absolute;
   top:20px;
@@ -235,153 +156,8 @@ body{
   z-index:9999;
 }
 
-/* =========================
-   CALENDARIO
-========================= */
-
-/* =========================
-   CALENDARIO DE MESES (6 MESES)
-========================= */
-
-.calendar{
-  margin-top:15px;
-
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(10px);
-
-  border-radius:20px;
-  padding:15px;
-}
-
-#calendar-title{
-  text-align:center;
-  font-weight:bold;
-  margin-bottom:10px;
-  font-size:14px;
-}
-
-/* meses en fila */
-#calendar-grid{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-}
-
-/* cada mes */
-.month{
-  flex:1;
-  padding:10px 5px;
-  border-radius:10px;
-
-  font-size:10px;
-  text-align:center;
-
-  background:rgba(255,255,255,0.2);
-}
-
-/* inicio y fin en rojo */
-.start-month{
-  background:red;
-  font-weight:bold;
-}
-
-.end-month{
-  background:red;
-  font-weight:bold;
-}
-
-/* =========================
-   TIMELINE REAL DEL VIAJE
-========================= */
-
-.timeline{
-  position:relative;
-  height:120px;
-  margin-top:15px;
-
-  background:rgba(255,255,255,0.12);
-  border-radius:20px;
-
-  backdrop-filter:blur(10px);
-  padding:15px;
-}
-
-/* línea principal */
-.line{
-  position:absolute;
-  top:50%;
-  left:10%;
-  right:10%;
-
-  height:4px;
-  background:white;
-  opacity:0.7;
-
-  transform:translateY(-50%);
-  border-radius:10px;
-}
-
-/* progreso visual */
-.progress{
-  position:absolute;
-  top:50%;
-  left:10%;
-
-  height:4px;
-  width:100%;
-
-  background:red;
-  opacity:0.4;
-
-  transform:translateY(-50%);
-  border-radius:10px;
-}
-
-/* puntos */
-.point{
-  position:absolute;
-  font-size:11px;
-  color:white;
-
-  transform:translateX(-50%);
-  text-align:center;
-}
-
-.start{
-  left:10%;
-  top:15%;
-
-  background:red;
-  padding:4px 6px;
-  border-radius:8px;
-}
-
-.middle{
-  left:50%;
-  top:60%;
-}
-
-.end{
-  left:90%;
-  top:15%;
-
-  background:red;
-  padding:4px 6px;
-  border-radius:8px;
-}
-
-/* =========================
-   IMPORTANTE
-========================= */
-
+/* IMPORTANTE */
 img,
 video{
   pointer-events:none;
-}
-
-/* separación extra seguridad */
-.calendar,
-.timeline{
-  margin-top:15px;
 }
