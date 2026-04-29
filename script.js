@@ -4,7 +4,6 @@ let currentScreen = 0;
 const music = document.getElementById("bgMusic");
 let locked = false;
 
-/* CAMBIO DE PANTALLA */
 function nextScreen(){
 
   if(locked) return;
@@ -20,22 +19,15 @@ function nextScreen(){
     music.play().catch(()=>{});
   }
 
+  document.querySelectorAll("video").forEach(v=>{
+    v.play().catch(()=>{});
+  });
+
   setTimeout(()=> locked = false, 500);
 }
 
+/* UN SOLO EVENTO UNIVERSAL */
 document.addEventListener("pointerdown", nextScreen);
-
-/* VIDEOS FIX iOS/ANDROID */
-function playVideos(){
-  document.querySelectorAll("video").forEach(v=>{
-    v.muted = true;
-    v.playsInline = true;
-    v.play().catch(()=>{});
-  });
-}
-
-/* activa videos en primer toque */
-document.addEventListener("pointerdown", playVideos, { once:true });
 
 /* CONTADOR */
 const startDate = new Date("2025-10-29T00:00:00");
