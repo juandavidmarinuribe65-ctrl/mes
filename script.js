@@ -38,8 +38,6 @@ function goToScreen(index) {
   }, 400);
 }
 
-/* 📱 TOQUE (TAP = AVANZAR) */
-document.addEventListener("pointerdown", nextScreen);
 
 /* 📲 SWIPE DETECTION */
 let startX = 0;
