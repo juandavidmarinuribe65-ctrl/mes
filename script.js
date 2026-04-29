@@ -1,39 +1,54 @@
+
 const screens = document.querySelectorAll(".screen");
 let currentScreen = 0;
 
 const music = document.getElementById("bgMusic");
 music.volume = 0.2;
 
-/* 📱 AVANZAR */
-function nextScreen() {
-  goToScreen(currentScreen + 1);
-}
+/* =========================
+   🔄 NAVEGACIÓN BASE
+========================= */
 
-/* ⬅️ VOLVER */
-function prevScreen(event) {
-  if (event) event.stopPropagation();
-  goToScreen(currentScreen - 1);
-}
-
-/* 🔄 CAMBIO SEGURO */
 function goToScreen(index) {
 
   if (index < 0 || index >= screens.length) return;
-
-  if (music && music.paused) {
-    music.play().catch(() => {});
-  }
 
   screens[currentScreen].classList.remove("active");
   currentScreen = index;
   screens[currentScreen].classList.add("active");
 }
 
-/* 📱 TOCAR = AVANZAR */
-document.addEventListener("pointerdown", nextScreen);
+function nextScreen() {
+  goToScreen(currentScreen + 1);
+}
 
+function prevScreen(event) {
+  if (event) event.stopPropagation();
+  goToScreen(currentScreen - 1);
+}
 
-/* 📊 CONTADOR DESDE 29 OCT 2025 */
+/* =========================
+   📱 TOQUE (AVANZAR)
+   (bloquea botón atrás)
+========================= */
+
+document.addEventListener("pointerdown", (e) => {
+
+  // si toca el botón ← no avanza
+  if (e.target.classList.contains("back-btn")) return;
+
+  // inicia música en primer toque
+  if (music && music.paused) {
+    music.play().catch(() => {});
+  }
+
+  nextScreen();
+});
+
+/* =========================
+   📊 CONTADOR
+========================= */
+
 const startDate = new Date("2025-10-29T00:00:00");
 
 function updateCounter() {
