@@ -3,8 +3,12 @@ let currentScreen = 0;
 
 const music = document.getElementById("bgMusic");
 
-/* NAVEGACIÓN */
+let locked = false; // evita doble disparo
+
 function nextScreen(){
+
+  if(locked) return;
+  locked = true;
 
   if(currentScreen < screens.length - 1){
     screens[currentScreen].classList.remove("active");
@@ -15,10 +19,13 @@ function nextScreen(){
   if(music && music.paused){
     music.play().catch(()=>{});
   }
+
+  // desbloquea después de un pequeño delay
+  setTimeout(()=> locked = false, 400);
 }
 
+/* SOLO UN EVENTO (IMPORTANTE) */
 document.addEventListener("click", nextScreen);
-document.addEventListener("touchstart", nextScreen);
 
 /* CONTADOR */
 const startDate = new Date("2025-10-29T00:00:00");
