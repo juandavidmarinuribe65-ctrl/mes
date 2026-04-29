@@ -3,46 +3,55 @@ const screens = document.querySelectorAll(".screen");
 let currentScreen = 0;
 
 const music = document.getElementById("bgMusic");
-if (music) music.volume = 0.2;
+music.volume = 0.2;
 
-/* CAMBIAR PANTALLA */
-function goToScreen(index){
+/* =========================
+   🔄 NAVEGACIÓN BASE
+========================= */
 
-  if(index < 0 || index >= screens.length) return;
+function goToScreen(index) {
+
+  if (index < 0 || index >= screens.length) return;
 
   screens[currentScreen].classList.remove("active");
   currentScreen = index;
   screens[currentScreen].classList.add("active");
 }
 
-function nextScreen(){
+function nextScreen() {
   goToScreen(currentScreen + 1);
 }
 
-function prevScreen(event){
-  if(event) event.stopPropagation();
+function prevScreen(event) {
+  if (event) event.stopPropagation();
   goToScreen(currentScreen - 1);
 }
 
-/* TOQUE PARA AVANZAR */
-function handleInteraction(e){
+/* =========================
+   📱 TOQUE (AVANZAR)
+   (bloquea botón atrás)
+========================= */
 
-  if(e.target.closest(".back-btn")) return;
+document.addEventListener("pointerdown", (e) => {
 
-  if(music && music.paused){
+  // si toca el botón ← no avanza
+  if (e.target.classList.contains("back-btn")) return;
+
+  // inicia música en primer toque
+  if (music && music.paused) {
     music.play().catch(() => {});
   }
 
   nextScreen();
-}
+});
 
-/* MÓVIL + PC */
-document.addEventListener("pointerdown", handleInteraction);
+/* =========================
+   📊 CONTADOR
+========================= */
 
-/* CONTADOR */
 const startDate = new Date("2025-10-29T00:00:00");
 
-function updateCounter(){
+function updateCounter() {
 
   const now = new Date();
   const diff = now - startDate;
@@ -56,13 +65,13 @@ function updateCounter(){
     (now.getFullYear() - startDate.getFullYear()) * 12 +
     (now.getMonth() - startDate.getMonth());
 
-  if(now.getDate() < startDate.getDate()){
+  if (now.getDate() < startDate.getDate()) {
     months--;
   }
 
-  const set = (id, value)=>{
+  const set = (id, value) => {
     const el = document.getElementById(id);
-    if(el) el.textContent = value;
+    if (el) el.textContent = value;
   };
 
   set("months", months);
