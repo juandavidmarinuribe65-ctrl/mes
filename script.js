@@ -57,3 +57,28 @@ function updateCounter(){
 
 setInterval(updateCounter,1000);
 updateCounter();
+function unlockVideosMobile(){
+
+  const videos = document.querySelectorAll("video");
+
+  videos.forEach(v => {
+
+    v.muted = true;
+    v.setAttribute("playsinline", "");
+    v.setAttribute("webkit-playsinline", "");
+
+    const tryPlay = () => {
+      const p = v.play();
+      if(p !== undefined){
+        p.catch(()=>{});
+      }
+    };
+
+    tryPlay();
+
+  });
+
+}
+
+/* IMPORTANTE: solo una vez, primer toque real */
+document.addEventListener("touchstart", unlockVideosMobile, { once:true });
