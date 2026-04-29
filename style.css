@@ -166,3 +166,6 @@ body{
   font-size:30px;
   cursor:pointer;
 }
+.screen.active{
+  display:flex !important;
+}
