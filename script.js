@@ -32,18 +32,24 @@ function prevScreen(event) {
    (bloquea botón atrás)
 ========================= */
 
-document.addEventListener("pointerdown", (e) => {
+function handleInteraction(e) {
 
-  // si toca el botón ← no avanza
-  if (e.target.classList.contains("back-btn")) return;
+  // ❌ si toca el botón de atrás, no avanzar
+  if (e.target.closest(".back-btn")) return;
 
-  // inicia música en primer toque
+  // 🎵 música solo en primera interacción
   if (music && music.paused) {
     music.play().catch(() => {});
   }
 
   nextScreen();
-});
+}
+
+/* 📱 MÓVIL (iPhone + Android) */
+document.addEventListener("touchstart", handleInteraction, { passive: true });
+
+/* 💻 PC */
+document.addEventListener("click", handleInteraction);
 
 /* =========================
    📊 CONTADOR
