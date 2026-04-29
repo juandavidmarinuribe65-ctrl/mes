@@ -1,3 +1,7 @@
+
+
+// PANTALLAS
+
 const screens =
 document.querySelectorAll(".screen");
 
@@ -46,13 +50,13 @@ function updateCounter(){
   Math.floor(diff / 1000);
 
   const minutes =
-  Math.floor(diff / (1000*60));
+  Math.floor(diff / (1000 * 60));
 
   const hours =
-  Math.floor(diff / (1000*60*60));
+  Math.floor(diff / (1000 * 60 * 60));
 
   const days =
-  Math.floor(diff / (1000*60*60*24));
+  Math.floor(diff / (1000 * 60 * 60 * 24));
 
   const months =
   Math.floor(days / 30);
@@ -78,7 +82,7 @@ setInterval(updateCounter,1000);
 updateCounter();
 
 
-// GALERÍA
+// GALERIA
 
 const memories =
 document.querySelectorAll(".memory");
@@ -90,8 +94,10 @@ setInterval(() => {
   memories[currentMemory]
   .classList.remove("active-memory");
 
-  if(memories[currentMemory]
-  .tagName === "VIDEO"){
+  if(
+    memories[currentMemory]
+    .tagName === "VIDEO"
+  ){
 
     memories[currentMemory]
     .pause();
@@ -110,8 +116,10 @@ setInterval(() => {
   memories[currentMemory]
   .classList.add("active-memory");
 
-  if(memories[currentMemory]
-  .tagName === "VIDEO"){
+  if(
+    memories[currentMemory]
+    .tagName === "VIDEO"
+  ){
 
     music.volume = 0.1;
 
@@ -120,3 +128,4 @@ setInterval(() => {
   }
 
 },7000);
+```
