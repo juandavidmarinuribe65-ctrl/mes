@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,47 +9,46 @@
 
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<audio id="bgMusic" loop>
-  <source src="cancion.mp3" type="audio/mp3">
-</audio>
+  <!-- MUSICA -->
+  <audio id="bgMusic" loop>
+    <source src="cancion.mp3" type="audio/mp3">
+  </audio>
 
-<div class="tap-text">
-  toca la pantalla ✨
-</div>
-
-<!-- PORTADA -->
-<section class="screen active">
-
-  <div class="card portada">
-
-    <h2>Feliz Mesiversario</h2>
-
-    <h1>Laura ❤️ Juan</h1>
-
-    <p>
-      29 • Octubre • 2025
-    </p>
-
-    <div class="heart">
-      ❤
-    </div>
-
+  <!-- TEXTO -->
+  <div class="tap-text">
+    toca la pantalla ✨
   </div>
 
-</section>
+  <!-- PANTALLA 1 -->
+  <section class="screen active">
 
-<!-- CALENDARIO -->
-<section class="screen">
+    <div class="card">
 
-  <div class="card">
+      <h2>Feliz Mesiversario</h2>
 
-    <h2>
-      Nuestra Historia ❤️
-    </h2>
+      <h1>Laura ❤️ Juan</h1>
 
-    <div class="calendar">
+      <p class="date">
+        29 • Octubre • 2025
+      </p>
+
+      <div class="heart">
+        ❤️
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PANTALLA 2 -->
+  <section class="screen">
+
+    <div class="card">
+
+      <h2>Nuestra Historia ❤️</h2>
 
       <div class="special">
         29 Octubre 2025 ❤️
@@ -57,79 +58,62 @@
         29 Abril 2026 — 6 Meses 💖
       </div>
 
+      <div class="counter">
+
+        <div class="counter-box">
+          <span id="months">0</span>
+          <p>Meses</p>
+        </div>
+
+        <div class="counter-box">
+          <span id="days">0</span>
+          <p>Días</p>
+        </div>
+
+        <div class="counter-box">
+          <span id="hours">0</span>
+          <p>Horas</p>
+        </div>
+
+        <div class="counter-box">
+          <span id="minutes">0</span>
+          <p>Minutos</p>
+        </div>
+
+        <div class="counter-box">
+          <span id="seconds">0</span>
+          <p>Segundos</p>
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="counter">
+  </section>
 
-      <div>
-        <span id="months">0</span>
-        <p>Meses</p>
-      </div>
+  <!-- PANTALLA 3 -->
+  <section class="screen">
 
-      <div>
-        <span id="days">0</span>
-        <p>Días</p>
-      </div>
+    <div class="letter-card">
 
-      <div>
-        <span id="hours">0</span>
-        <p>Horas</p>
-      </div>
-
-      <div>
-        <span id="minutes">0</span>
-        <p>Minutos</p>
-      </div>
-
-      <div>
-        <span id="seconds">0</span>
-        <p>Segundos</p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- CARTA -->
-<section class="screen">
-
-  <div class="letter-container">
-
-    <div class="envelope"></div>
-
-    <div class="letter">
-
-      <h2>
-        Para Laura ❤️
-      </h2>
+      <h2>Para Laura ❤️</h2>
 
       <p>
-
         ESCRIBE AQUÍ TU CARTA
-
       </p>
 
     </div>
 
-  </div>
+  </section>
 
-</section>
+  <!-- PANTALLA 4 -->
+  <section class="screen">
 
-<!-- RECUERDOS -->
-<section class="screen">
+    <div class="gallery">
 
-  <div class="memories-container">
+      <h2>Nuestros Recuerdos ✨</h2>
 
-    <h2>
-      Nuestros Recuerdos ✨
-    </h2>
-
-    <div class="memory-frame">
-
-      <img class="memory active-memory"
-      src="foto1.jpeg">
+      <img class="memory active-memory" src="foto1.jpeg">
 
       <video class="memory"
       src="video1.mp4"
@@ -166,11 +150,12 @@
 
     </div>
 
-  </div>
+  </section>
 
-</section>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
+
 </html>
+```
+
