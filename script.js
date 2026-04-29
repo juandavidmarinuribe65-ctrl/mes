@@ -6,28 +6,60 @@ music.volume = 0.2;
 
 let canClick = true;
 
+/* 🔁 CAMBIO DE PANTALLA */
 function nextScreen() {
 
   if (!canClick) return;
   canClick = false;
 
-  // 🎵 música solo con interacción real
+  // 🎵 iniciar música solo con interacción
   if (music && music.paused) {
     music.play().catch(() => {});
   }
 
-  // 🔁 cambiar pantalla
+  // 🔄 cambiar pantalla
   if (currentScreen < screens.length - 1) {
+
     screens[currentScreen].classList.remove("active");
     currentScreen++;
     screens[currentScreen].classList.add("active");
+
   }
 
-  // ⏱️ pequeño delay para evitar doble toque en móvil
   setTimeout(() => {
     canClick = true;
   }, 400);
 }
 
-/* 📱 TOQUE UNIVERSAL (ANDROID + IPHONE + PC) */
+/* 📱 TOQUE UNIVERSAL (MÓVIL + PC) */
 document.addEventListener("pointerdown", nextScreen);
+
+
+/* 📊 CONTADOR */
+const startDate = new Date("2025-10-29T00:00:00");
+
+function updateCounter() {
+
+  const now = new Date();
+  const diff = now - startDate;
+
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(diff / (1000 * 60));
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const months = Math.floor(days / 30);
+
+  const set = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+
+  set("months", months);
+  set("days", days);
+  set("hours", hours);
+  set("minutes", minutes);
+  set("seconds", seconds);
+}
+
+setInterval(updateCounter, 1000);
+updateCounter();
